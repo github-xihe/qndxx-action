@@ -52,7 +52,7 @@ object Main {
     }
 
     fun getLearnData(cookie: String): LearnData { //获取LearnData
-        val httpGet = HttpGet("http://qndxx.bestcood.com/nanning/daxuexi")
+        val httpGet = HttpGet("http://qndxx.bestcood.com/guigang/daxuexi")
         httpGet.setHeader("Cookie",cookie)
         val content = EntityUtils.toString(httpClient.execute(httpGet).entity)
         val learnData = "(?<=var learnData = ).+(?=;)".toRegex().find(content)!!.value
@@ -60,7 +60,7 @@ object Main {
     }
 
     fun learnHit(id : String,cookie : String){ //学习
-        val httpPost = HttpPost("http://qndxx.bestcood.com/mp/nanning/DaXueXi/LearnHit.html")
+        val httpPost = HttpPost("http://qndxx.bestcood.com/mp/guigang/DaXueXi/LearnHit.html")
         val nameValuePairList : ArrayList<NameValuePair> = ArrayList()
         nameValuePairList.add(BasicNameValuePair("id",id))
         httpPost.entity = UrlEncodedFormEntity(nameValuePairList,"UTF-8")
